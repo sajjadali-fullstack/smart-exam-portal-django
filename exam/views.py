@@ -19,7 +19,12 @@ from django.contrib import messages
 
 # Create your views / business logic here 👇.
 
-# Homepage: Saari Categories list karega
+
+
+
+
+
+# HomePage View: Saari Categories list karega
 def homepage(request):
     # categories = Category.objects.all()
     # return render(request, 'exam/homepage.html', {'categories': categories})
@@ -35,7 +40,7 @@ def homepage(request):
 
 
 
-# 2. Quiz Page: Category aur Difficulty ke basis par test load karega
+# QuizPage View : Category aur Difficulty ke basis par test load karega
 @login_required
 @never_cache
 def take_quiz(request, category_name, difficulty):
@@ -91,7 +96,7 @@ def take_quiz(request, category_name, difficulty):
 
 
 
-# 💡 Naya View: Jo Dashboard se click karne par Review page kholega
+#  Quiz Review View: Jo Dashboard se click karne par Review page kholega
 @login_required
 def quiz_review_view(request, result_id):
     result = get_object_or_404(TestResult, id=result_id, user=request.user)
@@ -120,7 +125,7 @@ def quiz_review_view(request, result_id):
 
 
 
-# 3. Dashboard / Leaderboard
+# Dashboard / Leaderboard View
 # def dashboard(request):
 #     # Top 10 highest marks scorers globally
 #     top_performers = TestResult.objects.order_by('-percentage',  'time_taken')
@@ -130,10 +135,7 @@ def quiz_review_view(request, result_id):
 
 #     return render(request, 'exam/dashboard.html', {'top_three': top_three, 'others': others,})
 def dashboard(request):
-    top_performers = TestResult.objects.order_by(
-        '-percentage',
-        'time_taken'
-    )
+    top_performers = TestResult.objects.order_by('-percentage', 'time_taken', 'date_attempted')
 
     return render(request, 'exam/dashboard.html', {
         'top_performers': top_performers,
@@ -141,6 +143,8 @@ def dashboard(request):
     })
 
 
+
+# Register View: User Registration
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -153,6 +157,9 @@ def register_view(request):
         form = UserCreationForm()
     return render(request, 'exam/register.html', {'form': form})
 
+
+
+
 # Python Query for Category-Wise No.1 Winner
 def get_category_winner(category_id):
     winner = TestResult.objects.filter(category_id=category_id)\
@@ -161,6 +168,8 @@ def get_category_winner(category_id):
     return winner
 
 
+
+# Interactive Quiz API View: For JavaScript
 @login_required
 def interactive_quiz_api(request, category_name, difficulty):
     category = get_object_or_404(Category, name__iexact=category_name)
@@ -211,6 +220,8 @@ def feedback_view(request):
     })
 
 
+
+
 # Reviews View
 # @login_required
 def reviews_view(request):
@@ -227,8 +238,7 @@ def reviews_view(request):
 
 
 
-# 
-
+# For Testing Purpose
 
 # def test500(request):
 #     x = 10 / 0
