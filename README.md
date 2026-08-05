@@ -44,6 +44,16 @@ A dynamic, secure, and fully responsive online examination platform built using 
 
 ---
 
+## ⚙️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| 🧠 Backend | <img src="https://skillicons.dev/icons?i=python,django" height="30"/> |
+| 🎨 Frontend | <img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="30"/> |
+| 🗄️ Database | <img src="https://skillicons.dev/icons?i=mysql" height="30"/> |
+| 🔨 Tools | <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/> |
+
+
 ## 📸 Screenshots
 
 > *(Add screenshots here)*
