@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .env
 .vscode/
+data.json
+db.sqlite3
+documentation.txt
