@@ -26,36 +26,21 @@ A dynamic, secure, and fully responsive online examination platform built using 
 
 ## 🛠️ Tech Stack
 
-<p align="center">
-  
-  <!-- Backend -->
-  <b>🧠 Backend:</b>
-  <br>
-  <p>
-  <img src="https://skillicons.dev/icons?i=python,django" height="30" style="vertical-align: middle;" />
-  </p>
-  
-  <br>
-  
-  <!-- Frontend -->
-  <b>🎨 Frontend:</b>
-  <br>
-  
-  <img src="https://skillicons.dev/icons?i=html,css,bootstrap" height="30"/>
+<div align="center">
 
-  <br>
-  
-  <!-- Tools --> 
-  <b>🔨 Tools:</b>
-  <br><br>
-  <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/>
-  
-  <!-- Database --> 
-  <b>🔨 Database:</b>
-  <br><br>
-  <img src="https://skillicons.dev/icons?i=mysql" height="30"/>
+### 🧠 Backend
+<img src="https://skillicons.dev/icons?i=python,django" height="45"/>
 
-</p>
+### 🎨 Frontend
+<img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="45"/>
+
+### 🗄️ Database
+<img src="https://skillicons.dev/icons?i=mysql" height="45"/>
+
+### 🔨 Tools
+<img src="https://skillicons.dev/icons?i=vscode,git,github" height="45"/>
+
+</div>
 
 ---
 
