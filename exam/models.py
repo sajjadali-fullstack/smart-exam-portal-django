@@ -3,9 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# Create your models / SQL Tables here.
+# Create your models / SQL Tables here 👇.
 
-# 1. Exam Category (Python, Accounts, React, etc.)
+# Exam Category (Python, Accounts, React, etc.)
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
@@ -13,7 +13,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-# 2. Question Bank with Difficulty and Category Link
+
+
+
+# Question Bank with Difficulty and Category Link
 class Question(models.Model):
     DIFFICULTY_CHOICES = [
         ('Easy', 'Easy'),
@@ -39,6 +42,10 @@ class Question(models.Model):
     def __str__(self):
         return f"[{self.category.name} - {self.difficulty}] {self.question_text[:30]}"
 
+
+
+
+
 # 3. Test Result / Leaderboard Entries
 class TestResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -54,6 +61,10 @@ class TestResult(models.Model):
         return f"{self.user.username} - {self.category.name} ({self.difficulty_level}) - {self.percentage}%"
 
 
+
+
+
+# Feedback Form
 class Feedback(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
