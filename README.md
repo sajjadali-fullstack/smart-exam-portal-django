@@ -33,8 +33,6 @@ A dynamic, secure, and fully responsive online examination platform built using 
   <br>
   <p>
   <img src="https://skillicons.dev/icons?i=python,django" height="30" style="vertical-align: middle;" />
-  <img src="https://img.shields.io/badge/DRF-092E20?style=flat-square&logo=django&logoColor=white" height="30" style="vertical-align: middle; margin: 0 3px;" />
-  <img src="https://skillicons.dev/icons?i=flask,mysql" height="30" style="vertical-align: middle;" />
   </p>
   
   <br>
@@ -43,28 +41,21 @@ A dynamic, secure, and fully responsive online examination platform built using 
   <b>🎨 Frontend:</b>
   <br>
   
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,tailwind,bootstrap" height="30"/>
+  <img src="https://skillicons.dev/icons?i=html,css,bootstrap" height="30"/>
 
   <br>
   
   <!-- Tools --> 
   <b>🔨 Tools:</b>
   <br><br>
-  <img src="https://skillicons.dev/icons?i=vscode,github,postman" height="30"/>
+  <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/>
+  
+  <!-- Database --> 
+  <b>🔨 Database:</b>
+  <br><br>
+  <img src="https://skillicons.dev/icons?i=mysql" height="30"/>
 
 </p>
-
----
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Gapur/Gapur/refs/heads/main/assets/coding.gif" width="400"/>
-</p>
-
-<p align="center">
-  Glad to see you here! I’m passionate about coding, building projects, and learning modern web technologies.
-</p>
-
----
 
 ---
 
