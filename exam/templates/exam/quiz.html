@@ -1,0 +1,144 @@
+{% extends 'exam/base.html' %}
+
+
+<!-- Title -->
+{% block titleBlock %}
+<title>Quiz | Smart Exam Portal</title>
+
+{% endblock titleBlock %}
+
+
+
+<!-- Content -->
+{% block content %}
+<div class="container mt-4">
+    <div class="row bg-white p-4 shadow-sm rounded mb-4 align-items-center">
+        <div class="col-md-8">
+            <h2 class="text-dark fw-bold mb-1">{{ category.name }} Assessment</h2>
+            <p class="text-muted mb-0">
+                Difficulty:
+                {% if difficulty == 'Hard' %}
+                <span class="badge bg-danger">🔴 Hard</span>
+                {% elif difficulty == 'Medium' %}
+                <span class="badge bg-warning text-dark">🟡 Medium</span>
+                {% else %}
+                <span class="badge bg-success">🟢 Easy</span>
+                {% endif %}
+                | Total Questions: <span class="fw-bold">{{ questions.count }}</span>
+            </p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <div class="card bg-light border-danger inline-block d-inline-flex p-2 px-3 align-items-center">
+                <span class="text-danger fw-bold small me-2">⏱️ TIME REMAINING</span>
+                <span id="timer-display" class="h3 mb-0 fw-bold text-danger">05:00</span>
+            </div>
+        </div>
+    </div>
+
+    <form id="quiz-form" method="POST">
+        {% csrf_token %}
+
+        {% for q in questions %}
+        <div class="card mb-4 shadow-sm border-0">
+            <div class="card-header bg-dark text-white fw-semibold">
+                Question {{ forloop.counter }}
+            </div>
+            <div class="card-body p-4">
+                <!-- <h5 class="card-title fw-bold text-secondary mb-4">{{ q.question_text|safe }}</h5> -->
+
+                <h5 class="card-title fw-bold text-secondary mb-4" style="white-space: pre-line;">
+                    {{ q.question_text }}
+                </h5>
+
+                <div class="options-group">
+                    <div class="form-check p-3 mb-2 border rounded hover-shadow-sm bg-light">
+                        <input class="form-check-input ms-1" type="radio" name="q_{{ q.id }}" value="1"
+                            id="q_{{ q.id }}_1">
+                        <label class="form-check-label ms-3" for="q_{{ q.id }}_1">{{ q.option1 }}</label>
+                    </div>
+
+                    <div class="form-check p-3 mb-2 border rounded hover-shadow-sm bg-light">
+                        <input class="form-check-input ms-1" type="radio" name="q_{{ q.id }}" value="2"
+                            id="q_{{ q.id }}_2">
+                        <label class="form-check-label ms-3" for="q_{{ q.id }}_2">{{ q.option2 }}</label>
+                    </div>
+
+                    <div class="form-check p-3 mb-2 border rounded hover-shadow-sm bg-light">
+                        <input class="form-check-input ms-1" type="radio" name="q_{{ q.id }}" value="3"
+                            id="q_{{ q.id }}_3">
+                        <label class="form-check-label ms-3" for="q_{{ q.id }}_3">{{ q.option3 }}</label>
+                    </div>
+
+                    <div class="form-check p-3 mb-3 border rounded hover-shadow-sm bg-light">
+                        <input class="form-check-input ms-1" type="radio" name="q_{{ q.id }}" value="4"
+                            id="q_{{ q.id }}_4">
+                        <label class="form-check-label ms-3" for="q_{{ q.id }}_4">{{ q.option4 }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning text-center p-5 shadow-sm">
+            <h4>No questions found!</h4>
+            <p class="mb-0">Please add questions for <strong>{{ category.name }}</strong> with <strong>{{ difficulty
+                    }}</strong> difficulty in the Admin Panel.</p>
+            <a href="{% url 'homepage' %}" class="btn btn-primary mt-3">Back to Home</a>
+        </div>
+        {% endfor %}
+
+        {% if questions %}
+        <div class="d-grid gap-2 mb-5">
+            <button type="submit" class="btn btn-success btn-lg shadow fw-bold">Submit Assessment</button>
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+<script>
+    // 1. Set duration (e.g., 5 Minutes)
+    let totalTimeInSeconds = 5 * 60;
+    const timerDisplay = document.getElementById('timer-display');
+    const quizForm = document.getElementById('quiz-form');
+
+    // 2. Countdown function
+    const examTimer = setInterval(function () {
+        let minutes = Math.floor(totalTimeInSeconds / 60);
+        let seconds = totalTimeInSeconds % 60;
+
+        // Formatting double digits (05:09 instead of 5:9)
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+
+        // Warning state when less than 1 minute remains
+        if (totalTimeInSeconds <= 60) {
+            timerDisplay.parentElement.classList.remove('bg-light');
+            timerDisplay.parentElement.classList.add('bg-danger', 'text-white');
+            timerDisplay.classList.remove('text-danger');
+            timerDisplay.classList.add('text-white');
+        }
+
+        // Time Over behavior
+        if (totalTimeInSeconds <= 0) {
+            clearInterval(examTimer);
+            alert("⏰ Time is up! Your answers are being submitted automatically.");
+            quizForm.submit(); // Force auto-submit form
+        }
+
+        totalTimeInSeconds--;
+    }, 1000);
+
+
+    // submit krne ke baad Back kre toh direct home page
+    // Browser Back Button Protection Logic
+    window.addEventListener('pageshow', function (event) {
+        // Agar page browser ke cache (history) se load ho raha hai
+        if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
+            // Toh user ko redirect kar do homepage par
+            window.location.reload();
+            window.location.href = "{% url 'homepage' %}";
+        }
+    });
+</script>
+{% endblock %}

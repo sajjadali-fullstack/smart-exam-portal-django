@@ -1,0 +1,107 @@
+{% extends 'exam/base.html' %}
+{% block content %}
+<div class="container mt-4" style="max-width: 700px;">
+    <div class="d-flex justify-content-between align-items-center bg-white p-3 shadow-sm rounded mb-4">
+        <h4 class="fw-bold mb-0 text-primary">{{ category_name }} Bot Mode 🤖</h4>
+        <div class="badge bg-dark fs-6" id="progress-text">Question 1/1</div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded p-4 bg-white" style="min-height: 400px;">
+        
+        <div class="d-flex align-items-start mb-4">
+            <div class="bg-primary text-white p-3 rounded shadow-sm w-100 position-relative">
+                <span class="fw-bold d-block mb-1 text-warning">Exam Bot:</span>
+                <h5 id="chat-question" class="mb-0">Loading your first question...</h5>
+            </div>
+        </div>
+
+        <div id="options-container" class="d-grid gap-2 mb-4">
+            </div>
+
+        <div id="feedback-box" class="alert d-none shadow-sm border-0 p-3 mb-4">
+            <h6 class="fw-bold" id="feedback-title">🟢 Correct Answer!</h6>
+            <p class="small mb-0" id="feedback-explanation"></p>
+        </div>
+
+        <div class="text-end">
+            <button id="next-btn" class="btn btn-secondary d-none px-4 fw-bold shadow-sm">Next Question ➡️</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentIdx = 0;
+    let questionsList = [];
+    let correctAnswersCount = 0;
+
+    // Backend API se data pull karna
+    fetch(`/api/quiz/{{ category_name }}/{{ difficulty }}/`)
+        .then(res => res.json())
+        .then(data => {
+            questionsList = data.questions;
+            if (questionsList.length > 0) {
+                renderQuestion();
+            } else {
+                document.getElementById('chat-question').textContent = "No questions found in this segment.";
+            }
+        });
+
+    function renderQuestion() {
+        // Reset dynamic elements
+        document.getElementById('feedback-box').classList.add('d-none');
+        document.getElementById('next-btn').classList.add('d-none');
+        
+        let q = questionsList[currentIdx];
+        document.getElementById('progress-text').textContent = `Question ${currentIdx + 1}/${questionsList.length}`;
+        document.getElementById('chat-question').textContent = q.question_text;
+
+        let optionsDiv = document.getElementById('options-container');
+        optionsDiv.innerHTML = ''; // purane buttons saaf karein
+
+        q.options.forEach((opt, index) => {
+            let optNum = index + 1;
+            let btn = document.createElement('button');
+            btn.className = "btn btn-outline-secondary p-3 text-start border rounded hover-shadow fw-medium bg-light text-dark";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(optNum, btn, q.correct_option, q.explanation);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selected, element, correct, explanation) {
+        let buttons = document.querySelectorAll('#options-container button');
+        buttons.forEach(b => b.disabled = true); // Ek baar click ke baad baaki buttons lock
+
+        let feedbackBox = document.getElementById('feedback-box');
+        let fTitle = document.getElementById('feedback-title');
+        let fExpl = document.getElementById('feedback-explanation');
+
+        if (selected === correct) {
+            element.className = "btn btn-success p-3 text-start text-white fw-bold shadow-sm mb-2";
+            feedbackBox.className = "alert alert-success shadow-sm border-0 p-3 mb-4";
+            fTitle.innerText = "🎉 Shabaash! Bilkul Sahi Jawab.";
+            correctAnswersCount++;
+        } else {
+            element.className = "btn btn-danger p-3 text-start text-white fw-bold shadow-sm mb-2";
+            buttons[correct - 1].className = "btn btn-success p-3 text-start text-white fw-bold shadow-sm mb-2";
+            feedbackBox.className = "alert alert-danger shadow-sm border-0 p-3 mb-4";
+            fTitle.innerText = "❌ Oops! Galti ho gayi, koi baat nahi.";
+        }
+
+        fExpl.innerText = explanation;
+        feedbackBox.classList.remove('d-none');
+        document.getElementById('next-btn').classList.remove('d-none');
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+        currentIdx++;
+        if (currentIdx < questionsList.length) {
+            renderQuestion();
+        } else {
+            // End of Quiz - Backend par automatically save bhejein ya dashboard send karein
+            alert(`Quiz completed! You scored ${correctAnswersCount}/${questionsList.length}`);
+            window.location.href = "{% url 'dashboard' %}";
+        }
+    };
+</script>
+{% endblock %}

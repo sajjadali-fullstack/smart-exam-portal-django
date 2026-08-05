@@ -1,0 +1,394 @@
+{% extends 'exam/base.html' %}
+
+{% block titleBlock %}
+<title>About | Smart Exam Portal</title>
+{% endblock titleBlock %}
+
+{% block extra_css %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    body {
+
+        min-height: 100vh;
+        background:
+            radial-gradient(circle at top left, #ffffff, #f3f0ff 40%, #ececec);
+        color: #1c1c1c;
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+
+    /* Navbar */
+
+    nav {
+
+        padding: 35px 8%;
+    }
+
+
+    .logo {
+
+        font-family: 'Playfair Display', serif;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: .5px;
+
+        background: linear-gradient(90deg, #6c5ce7, #e84393);
+        -webkit-background-clip: text;
+        color: transparent;
+
+    }
+
+
+    /* Main Card */
+
+
+    .about-container {
+
+        width: 90%;
+        max-width: 520px;
+
+        margin: 40px auto;
+
+        background: rgba(255, 255, 255, 0.75);
+
+        backdrop-filter: blur(25px);
+
+        padding: 65px 35px;
+
+        border-radius: 45px;
+
+        text-align: center;
+
+        box-shadow:
+            0 30px 70px rgba(108, 92, 231, .15);
+
+        border: 1px solid rgba(255, 255, 255, .8);
+
+    }
+
+
+
+    /* Name */
+
+
+    .content h1 {
+
+        font-family: 'Playfair Display', serif;
+
+        font-size: 48px;
+
+        line-height: 1.2;
+
+        letter-spacing: .5px;
+
+        margin-bottom: 18px;
+
+
+        background:
+            linear-gradient(135deg, #7657e8, #d84ca7);
+
+        -webkit-background-clip: text;
+
+        color: transparent;
+
+    }
+
+
+    /* Role */
+
+
+    .content h3 {
+
+        font-size: 17px;
+
+        font-weight: 600;
+
+        color: #666;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 45px;
+
+    }
+
+
+
+    /* Buttons */
+
+
+    .buttons {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+
+    .buttons a {
+
+        width: 100%;
+
+        padding: 18px;
+
+        border-radius: 50px;
+
+        font-size: 18px;
+
+        font-weight: 700;
+
+        text-decoration: none;
+
+        transition: .4s;
+
+        box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
+
+    }
+
+
+    .portfolio {
+
+        background:
+            linear-gradient(135deg, #7357e8, #9945b7);
+
+        color: white;
+
+    }
+
+
+
+    .linkedin {
+
+        background:
+            linear-gradient(135deg, #087bb5, #08a7f5);
+
+        color: white;
+
+    }
+
+
+
+    .buttons a:hover {
+
+        transform: translateY(-5px);
+
+    }
+
+
+
+    @media(max-width:768px) {
+
+        .about-container {
+
+            padding: 50px 25px;
+
+        }
+
+
+        .content h1 {
+
+            font-size: 34px;
+
+        }
+
+
+        .content h3 {
+
+            font-size: 13px;
+
+        }
+
+    }
+
+
+    .portfolio {
+
+        color: white;
+
+        background:
+            linear-gradient(135deg, #6c5ce7, #8e44ad);
+
+    }
+
+
+
+    .linkedin {
+
+        color: white;
+
+        background:
+            linear-gradient(135deg, #0077b5, #00a8ff);
+
+    }
+
+
+
+    .buttons a:hover {
+
+        transform: translateY(-6px);
+
+        box-shadow: 0 18px 35px rgba(0, 0, 0, .20);
+
+    }
+
+
+
+    /* Footer */
+
+    .footer {
+        margin-top: 70px;
+        padding: 22px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: .4px;
+        border-top: 1px solid rgba(255, 255, 255, .08);
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, .15);
+    }
+
+    .footer p {
+        margin: 0;
+    }
+
+    /* .footer span{
+    font-weight:700;
+    background:linear-gradient(90deg,#00e676,#00c853);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+} */
+
+
+    .footer span {
+        color: #ffd54f;
+        background: none;
+        -webkit-text-fill-color: initial;
+        font-weight: 700;
+    }
+
+    .footer:hover {
+        color: #fff;
+        transition: .3s ease;
+    }
+
+
+    /* Responsive */
+
+
+    @media(max-width:768px) {
+
+
+        nav {
+
+            text-align: center;
+
+        }
+
+
+        .about-container {
+
+            padding: 45px 25px;
+
+        }
+
+
+        .content h1 {
+
+            font-size: 34px;
+
+        }
+
+
+        .content h3 {
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .buttons a {
+
+            width: 100%;
+
+        }
+
+
+
+    }
+
+
+    @media(max-width:400px) {
+
+
+        .content h1 {
+
+            font-size: 28px;
+
+        }
+
+
+        .about-container {
+
+            width: 94%;
+
+        }
+
+
+    }
+</style>
+{% endblock extra_css %}
+
+
+<!-- Content -->
+{% block content %}
+
+
+
+<section class="about-container">
+    <div class="content">
+        <h1>Sajjad Ali Javed Ali Shaikh</h1>
+
+        <h3>Full Stack Python Developer</h3>
+
+        <div class="buttons">
+
+            <a class="portfolio" href="https://sajjadali-fullstack-portfolio.netlify.app/" target="_blank">View
+                Portfolio</a>
+
+            <a class="linkedin" href="https://www.linkedin.com/in/sajjadali-fullstack/" target="_blank">View LinkedIn
+                Profile</a>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- MARK: Footer
+    -->
+<footer class="footer">
+    <p>
+        Designed & Developed with ❤️ by <span>Sajjad Ali</span> • 📍 Crafted in <span style="color: rgb(24, 190, 24);">
+            Mumbra </span>, <span style="color: orangered;"> Maharashtra</span> • © 2026 Smart Exam Portal
+    </p>
+</footer>
+{% endblock content %}

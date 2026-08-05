@@ -1,0 +1,49 @@
+{% extends 'exam/base.html' %}
+
+{% block titleBlock %}
+<title>Reviews | Smart Exam Portal</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        ⭐ User Reviews
+    </h2>
+
+    {% if reviews %}
+
+        {% for review in reviews %}
+
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+
+                <h5>{{ review.name }}</h5>
+
+                <p>
+                    ⭐ {{ review.rating }}/5
+                </p>
+
+                <p>{{ review.message }}</p>
+
+                <small class="text-muted">
+                    {{ review.created_at|date:"d M Y • h:i A" }}
+                </small>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-info text-center">
+            No reviews yet.
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

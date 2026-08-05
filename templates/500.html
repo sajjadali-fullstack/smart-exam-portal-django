@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 | Smart Exam Portal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:
+                radial-gradient(circle at top left, #334155 0%, #0f172a 55%, #020617 100%);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #3b82f6;
+            filter: blur(180px);
+            opacity: .20;
+            top: -120px;
+            left: -120px;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: #8b5cf6;
+            filter: blur(170px);
+            opacity: .18;
+            right: -100px;
+            bottom: -100px;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 760px;
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 28px;
+            padding: 55px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg,#60a5fa,#a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        p {
+            color: #cbd5e1;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 580px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 15px 34px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            background: linear-gradient(135deg,#3b82f6,#8b5cf6);
+            box-shadow: 0 10px 30px rgba(59,130,246,.35);
+            transition: .35s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(139,92,246,.45);
+        }
+
+        .footer {
+            margin-top: 45px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .footer span {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        @media(max-width:768px){
+
+            .card{
+                padding:40px 25px;
+            }
+
+            .error-code{
+                font-size:90px;
+            }
+
+            h1{
+                font-size:30px;
+            }
+
+            p{
+                font-size:15px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="error-code">500</div>
+
+        <h1>Oops! Something Went Wrong</h1>
+
+        <p>
+            The server encountered an unexpected error while processing your request.
+            Please try again in a few moments. If the issue persists, return to the homepage.
+        </p>
+
+        <a href="/" class="btn">
+            🏠 Return to Homepage
+        </a>
+
+        <div class="footer">
+            Smart Exam Portal • Designed & Developed by
+            <span>Sajjad Ali</span>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

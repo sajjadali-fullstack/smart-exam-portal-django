@@ -1,0 +1,104 @@
+{% extends 'exam/base.html' %}
+
+
+{% block extra_css %}
+<style>
+
+.stats-bar{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:#fff;
+    padding:18px 15px;
+    margin:35px 0;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    flex-wrap:wrap;
+}
+
+.stats-bar div{
+    text-align:center;
+    padding:10px;
+}
+
+.stats-bar span{
+    font-size:22px;
+}
+
+.stats-bar strong{
+    display:block;
+    font-size:20px;
+    margin-top:5px;
+}
+
+.stats-bar small{
+    color:#777;
+}
+
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container my-5">
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bold text-secondary">Choose Your Assessment Domain</h1>
+    <p class="text-muted">Select a category and choose your custom difficulty level to start the test.</p>
+</div>
+
+
+   <div class="stats-bar shadow-sm rounded-4">
+
+    <div>
+        <span>👥</span>
+        <strong>{{ users_count }}</strong>
+        <small>Users</small>
+    </div>
+
+    <div>
+        <span>📚</span>
+        <strong>{{ categories_count }}</strong>
+        <small>Categories</small>
+    </div>
+
+    <div>
+        <span>📝</span>
+        <strong>{{ questions_count }}</strong>
+        <small>Questions</small>
+    </div>
+
+    <div>
+        <span>🏆</span>
+        <strong>{{ attempts_count }}</strong>
+        <small>Attempts</small>
+    </div>
+
+</div>
+
+
+<div class="row">
+    {% for cat in categories %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <h3 class="card-title text-primary fw-bold">{{ cat.name }}</h3>
+                <p class="card-text text-muted">{{ cat.description|default:"Test your core conceptual skills." }}</p>
+                <hr>
+                <p class="fw-semibold text-secondary">Select Difficulty:</p>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'take_quiz' cat.name 'Easy' %}" class="btn btn-outline-success btn-sm">🟢 Easy Level</a>
+                    <a href="{% url 'take_quiz' cat.name 'Medium' %}" class="btn btn-outline-warning btn-sm text-dark">🟡 Medium Level</a>
+                    <a href="{% url 'take_quiz' cat.name 'Hard' %}" class="btn btn-outline-danger btn-sm">🔴 Hard Level</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="text-center">
+        <p class="alert alert-info">No fields created yet. Please visit admin panel to insert metrics.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

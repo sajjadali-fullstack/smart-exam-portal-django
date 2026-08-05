@@ -1,0 +1,80 @@
+{% extends 'exam/base.html' %}
+{% block content %}
+<div class="container mt-4" style="max-width: 800px;">
+
+    <!-- Top Nav Back button -->
+    <div class="mb-3">
+        <a href="{% url 'dashboard' %}" class="btn btn-sm btn-secondary">⬅️ Back to Dashboard</a>
+    </div>
+
+    <!-- Result Card -->
+    <div class="card text-center shadow border-0 mb-4 bg-white p-4">
+        <h2 class="fw-bold text-dark mb-2">📊 Assessment Review Summary</h2>
+        <h5 class="text-muted">Domain: <span class="text-primary">{{ result.category.name }}</span> ({{
+            result.difficulty_level }})</h5>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <h4 class="fw-bold text-success">{{ result.correct_answers }} / {{ result.total_questions }}</h4>
+                <p class="small text-muted mb-0">Score Count</p>
+            </div>
+            <div class="col-6">
+                <h4 class="fw-bold text-primary">{{ result.percentage }}%</h4>
+                <p class="small text-muted mb-0">Percentage</p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="fw-bold text-secondary mb-3">📝 Question-by-Question Breakdowns</h4>
+
+    {% for item in review_data %}
+    <div
+        class="card mb-4 shadow-sm border-0 {% if item.is_correct %}border-start border-success border-5{% else %}border-start border-danger border-5{% endif %}">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <span class="fw-semibold">Question {{ forloop.counter }}</span>
+            {% if item.is_correct %}
+            <span class="badge bg-success">🟢 Sahi</span>
+            {% else %}
+            <span class="badge bg-danger">🔴 Galat</span>
+            {% endif %}
+        </div>
+        <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-3">{{ item.question.question_text }}</h5>
+
+            <div class="mb-3">
+                <div
+                    class="p-2 mb-2 border rounded {% if item.question.correct_option == 1 %}bg-success-subtle border-success fw-bold text-success-emphasis{% elif item.selected == 1 %}bg-danger-subtle border-danger text-danger-emphasis{% endif %}">
+                    A. {{ item.question.option1 }}</div>
+                <div
+                    class="p-2 mb-2 border rounded {% if item.question.correct_option == 2 %}bg-success-subtle border-success fw-bold text-success-emphasis{% elif item.selected == 2 %}bg-danger-subtle border-danger text-danger-emphasis{% endif %}">
+                    B. {{ item.question.option2 }}</div>
+                <div
+                    class="p-2 mb-2 border rounded {% if item.question.correct_option == 3 %}bg-success-subtle border-success fw-bold text-success-emphasis{% elif item.selected == 3 %}bg-danger-subtle border-danger text-danger-emphasis{% endif %}">
+                    C. {{ item.question.option3 }}</div>
+                <div
+                    class="p-2 mb-2 border rounded {% if item.question.correct_option == 4 %}bg-success-subtle border-success fw-bold text-success-emphasis{% elif item.selected == 4 %}bg-danger-subtle border-danger text-danger-emphasis{% endif %}">
+                    D. {{ item.question.option4 }}</div>
+            </div>
+
+            <div class="small text-muted mb-2">Aapka option: <span class="fw-bold">{{ item.selected_text }}</span></div>
+
+            {% if item.question.explanation %}
+            <!-- <div class="alert alert-warning border-0 shadow-sm mt-3 p-3">
+                <h6 class="fw-bold mb-1 text-warning-emphasis">💡 Learn/Revise:</h6>
+                <p class="small mb-0 text-dark">{{ item.question.explanation }}</p>
+            
+            </div> -->
+            <div class="alert alert-warning border-0 shadow-sm mt-3 p-3">
+                <h6 class="fw-bold mb-1 text-warning-emphasis">
+                    💡 Learn/Revise:
+                </h6>
+
+                <pre class="small mb-0 text-dark"
+                    style="white-space: pre-wrap; font-family: inherit;">{{ item.question.explanation }}</pre>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

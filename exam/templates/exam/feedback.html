@@ -1,0 +1,83 @@
+{% extends 'exam/base.html' %}
+
+{% block titleBlock %}
+<title>Reviews & Feedback | Smart Exam Portal</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success text-center shadow-sm">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="card shadow-lg border-0 rounded-4 p-4 mx-auto" style="max-width:700px;">
+
+        <h2 class="text-center fw-bold mb-2">
+            ⭐ Reviews & Feedback
+        </h2>
+
+        <p class="text-center text-muted mb-4">
+            We'd love to hear your experience with Smart Exam Portal.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label class="form-label fw-semibold">
+                    Name
+                </label>
+
+                {{ form.name }}
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label fw-semibold">
+                    Email (Optional)
+                </label>
+
+                {{ form.email }}
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label fw-semibold">
+                    Rating (1 - 5)
+                </label>
+
+                {{ form.rating }}
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label fw-semibold">
+                    Your Feedback
+                </label>
+
+                {{ form.message }}
+
+            </div>
+
+            <button class="btn btn-primary w-100 rounded-pill py-2 fw-bold">
+                🚀 Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

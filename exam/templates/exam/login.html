@@ -1,0 +1,44 @@
+{% extends 'exam/base.html' %}
+
+
+<!-- Title -->
+{% block titleBlock %}
+<title>Login | Smart Exam Portal</title>
+
+{% endblock titleBlock %}
+{% block extra_css %}{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow border-0">
+            <div class="card-header bg-dark text-white text-center fw-bold">Sign In to SmartExam</div>
+            <div class="card-body p-4">
+                
+                {% if form.errors %}
+                    <div class="alert alert-danger p-2 small">
+                        <ul class="mb-0 ps-3">
+                            <li>Your username and password didn't match. Please try again.</li>
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-bold">{{ field.label }}</label>
+                            <input type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" class="form-control" required>
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+                </form>
+                <div class="text-center mt-3">
+                    <p class="small text-muted mb-0">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
