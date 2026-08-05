@@ -22,25 +22,6 @@ A dynamic, secure, and fully responsive online examination platform built using 
 - 🚨 Custom 404 & 500 Error Pages
 - 🗄️ MySQL Database Integration
 - 🔒 Environment Variables using `.env`
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-### 🧠 Backend
-<img src="https://skillicons.dev/icons?i=python,django" height="45"/>
-
-### 🎨 Frontend
-<img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="45"/>
-
-### 🗄️ Database
-<img src="https://skillicons.dev/icons?i=mysql" height="45"/>
-
-### 🔨 Tools
-<img src="https://skillicons.dev/icons?i=vscode,git,github" height="45"/>
-
-</div>
 
 ---
 
@@ -52,6 +33,8 @@ A dynamic, secure, and fully responsive online examination platform built using 
 | 🎨 Frontend | <img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="30"/> |
 | 🗄️ Database | <img src="https://skillicons.dev/icons?i=mysql" height="30"/> |
 | 🔨 Tools | <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/> |
+
+---
 
 
 ## 📸 Screenshots
