@@ -5,46 +5,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="author" content="Sajjad Ali">
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" content="#00d26a">
     {% block titleBlock %}
     <title>Home | Smart Exam Portal</title>
     {% endblock titleBlock %}
 
-   <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 
+    <style>
+        .navbar {
+            background: #111 !important;
+        }
+
+        .navbar .nav-link,
+        .navbar .navbar-brand {
+            color: #fff !important;
+            opacity: 1 !important;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .navbar .nav-link {
+            position: relative;
+        }
+
+        .navbar .nav-link:hover {
+            color: #00d26a !important;
+
+        }
+
+        .navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 10%;
+            bottom: 2px;
+            width: 0;
+            height: 2px;
+            background: #00d26a;
+            transition: .3s ease;
+        }
+    </style>
     {% block extra_css %}{% endblock %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'homepage' %}">🎯 SmartExam</a>
-            <a class="navbar-brand fw-bold" href="{% url 'about' %}">🧑🏻‍💻 About Developer</a>
-            <a class="nav-link text-white me-3" href="{% url 'feedback' %}">Feedback</a>
-            <a href="{% url 'reviews' %}" class="nav-link text-white me-3">⭐ Reviews</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
 
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="{% url 'homepage' %}">
+                🎯 SmartExam
+            </a>
+
+            <!-- Mobile Toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Navbar -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto align-items-center">
-                    <a class="nav-link text-white me-3" href="{% url 'dashboard' %}">🏆 Leaderboard</a>
+
+                <!-- Left Side -->
+                <ul class="navbar-nav me-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">
+                            🧑🏻‍💻 About Developer
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'feedback' %}">
+                            🗣️ Feedback
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews' %}">
+                            ⭐ Reviews
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">
+                            🏆 Leaderboard
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Right Side -->
+                <div class="d-flex align-items-center flex-wrap">
 
                     {% if user.is_authenticated %}
-                    <span class="navbar-text text-warning fw-bold me-3">
-                        👋 Welcome, {{ user.username }}
+
+                    <span class="navbar-text text-warning fw-bold me-lg-3 mb-2 mb-lg-0">
+                        👋 {{ user.username }}
                     </span>
-                    <form action="{% url 'logout' %}" method="POST" class="d-inline">
+
+                    <form action="{% url 'logout' %}" method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Logout</button>
+                        <button class="btn btn-outline-danger btn-sm">
+                            Logout
+                        </button>
                     </form>
+
                     {% else %}
-                    <a class="btn btn-outline-light btn-sm me-2" href="{% url 'login' %}">Login</a>
-                    <a class="btn btn-warning btn-sm text-dark fw-bold" href="{% url 'register' %}">Register</a>
+
+                    <a href="{% url 'login' %}" class="btn btn-success btn-sm fw-bold me-4">
+                        Login
+                    </a>
+
+                    <a href="{% url 'register' %}" class="btn btn-warning btn-sm fw-bold">
+                        Register
+                    </a>
+
                     {% endif %}
+
                 </div>
+
             </div>
+
         </div>
     </nav>
 
