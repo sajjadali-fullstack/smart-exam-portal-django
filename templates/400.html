@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>400 - Bad Request</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg,#0f172a,#1e293b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            background: rgba(255,255,255,.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow:0 15px 40px rgba(0,0,0,.3);
+        }
+
+        h1{
+            font-size:110px;
+            color:#ff4d4f;
+            margin-bottom:10px;
+        }
+
+        h2{
+            font-size:34px;
+            margin-bottom:20px;
+        }
+
+        p{
+            color:#d1d5db;
+            line-height:1.8;
+            margin-bottom:35px;
+        }
+
+        a{
+            display:inline-block;
+            padding:14px 32px;
+            border-radius:12px;
+            text-decoration:none;
+            background:#00c853;
+            color:white;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        a:hover{
+            transform:translateY(-3px);
+            background:#00b248;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>400</h1>
+
+    <h2>⚠️ Bad Request</h2>
+
+    <p>
+        Oops! The request could not be processed because it was invalid
+        or malformed.
+    </p>
+
+    <a href="{% url 'homepage' %}">
+        ⬅ Back to Homepage
+    </a>
+
+</div>
+
+</body>
+
+</html>
