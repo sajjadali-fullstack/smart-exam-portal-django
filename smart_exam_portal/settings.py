@@ -25,7 +25,15 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'django-insecure-+!*qn-_fbogs&#_9j%i-00j9i%f0eeqi423z95$vwodb)4iia1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True 
+DEBUG = True 
+
+# ALLOWED_HOSTS = [
+#     "localhost",
+#     "127.0.0.1",
+#      "smartexamportal.pythonanywhere.com",
+# ]
+
+
 DEBUG = False
 
 ALLOWED_HOSTS = [
