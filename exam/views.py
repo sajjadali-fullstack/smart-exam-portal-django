@@ -16,7 +16,7 @@ from exam.models import Feedback
 from .forms import FeedbackForm
 from django.contrib import messages
 
-
+from exam.forms import RegisterForm
 # Create your views / business logic here 👇.
 
 
@@ -135,11 +135,11 @@ def quiz_review_view(request, result_id):
 
 #     return render(request, 'exam/dashboard.html', {'top_three': top_three, 'others': others,})
 def dashboard(request):
-    top_performers = TestResult.objects.order_by('-percentage', 'time_taken', 'date_attempted')
+    top_performers = TestResult.objects.filter(percentage__gte=50).order_by('-percentage', 'time_taken', 'date_attempted')
 
     return render(request, 'exam/dashboard.html', {
         'top_performers': top_performers,
-        'top_three': top_performers[:3],
+        'top_three': top_performers[:3],  # Sirf pehle 3 records lo.
     })
 
 
@@ -147,14 +147,15 @@ def dashboard(request):
 # Register View: User Registration
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user) # Register hote hi user automatic login ho jayega
+            login(request, user)
             messages.success(request, "Registration successful!")
             return redirect('homepage')
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
+
     return render(request, 'exam/register.html', {'form': form})
 
 
@@ -238,6 +239,15 @@ def reviews_view(request):
 
 
 
+
+
+
+from .forms import LoginForm
+from django.contrib.auth.views import LoginView
+
+class UserLoginView(LoginView):
+    authentication_form = LoginForm
+    template_name = "exam/login.html"
 # For Testing Purpose
 
 # def test500(request):
