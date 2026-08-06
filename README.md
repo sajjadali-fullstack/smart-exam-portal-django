@@ -25,6 +25,10 @@ A dynamic, secure, and fully responsive online examination platform built using 
 - 📱 Fully Responsive UI (Bootstrap 5)
 - 🚨 Custom 404 & 500 Error Pages
 - 🗄️ MySQL Database Integration
+- 🔍 SEO Optimized
+- 🚨 Custom 400, 404 & 500 Error Pages
+- ☁️ Production Deployment on PythonAnywhere
+- 📊 Performance Analytics
 - 🔒 Environment Variables using `.env`
 
 ---
@@ -35,7 +39,7 @@ A dynamic, secure, and fully responsive online examination platform built using 
 |----------|--------------|
 | 🧠 Backend | <img src="https://skillicons.dev/icons?i=python,django" height="30"/> |
 | 🎨 Frontend | <img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="30"/> |
-| 🗄️ Database | <img src="https://skillicons.dev/icons?i=mysql" height="30"/> |
+| 🗄️ Database | <img src="https://skillicons.dev/icons?i=sqlite" height="30"/>  • MySQL (Development) |
 | 🔨 Tools | <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/> |
 
 ---
