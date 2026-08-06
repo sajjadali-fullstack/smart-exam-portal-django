@@ -13,7 +13,7 @@
 {% block content %}
 <div class="container mt-4">
     <div class="text-center my-4">
-        <h1 class="fw-bold text-dark">🏆 Hall of Fame & Dashboard</h1>
+        <h1 class="fw-bold text-dark">🏆 Global Leaderboard</h1>
         <p class="text-muted">Top performers scoring high accuracy ranks globally.</p>
     </div>
 
@@ -56,7 +56,7 @@ bg-danger-subtle
                     </p>
 
                     <h2 class="text-success fw-bold">
-                        {{ winner.percentage }}%
+                        {{ winner.percentage|floatformat:2 }}%
                     </h2>
 
                 </div>
@@ -129,14 +129,14 @@ bg-danger-subtle
 
                         <td>
                             <span class="badge bg-light text-dark border px-3 py-2">
-                                📅 {{ row.date_attempted|date:"d M Y, h:i A" }}
+                                {{ row.date_attempted|date:"d M Y, h:i A" }}
                             </span>
                         </td>
                     </tr>
 
                     {% empty %}
                     <tr>
-                        <td colspan="5" class="text-center py-4 text-muted">
+                        <td colspan="6" class="text-center py-4 text-muted">
                             No attempts recorded yet.
                         </td>
                     </tr>
@@ -176,8 +176,8 @@ bg-danger-subtle
                         <tr>
                             <td class="small text-muted">{{ res.date_attempted|date:"d M Y, h:i A" }}</td>
                             <td class="fw-bold">{{ res.category.name }}</td>
-                            <td>
-                                {% if res.difficulty_level == 'Hard' %} <span class="badge bg-danger">Hard</span>
+
+                            <td>{% if res.difficulty_level == 'Hard' %} <span class="badge bg-danger">Hard</span>
                                 {% elif res.difficulty_level == 'Medium' %} <span
                                     class="badge bg-warning text-dark">Medium</span>
                                 {% else %} <span class="badge bg-success">Easy</span> {% endif %}
