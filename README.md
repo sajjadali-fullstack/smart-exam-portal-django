@@ -1,4 +1,8 @@
-## ***Idea came while commuting in Mumbai local train — wanted a platform to revise programming concepts on the go. Built Smart Exam Portal with Django featuring category-based quizzes, difficulty filters, leaderboard, and answer review system.***
+## 💡 Inspiration
+
+
+
+## ***Idea came while commuting in Mumbai local train*** — **wanted a platform to revise programming concepts on the go.<br> Built Smart Exam Portal with Django featuring category-based quizzes, difficulty filters, leaderboard, and answer review system.**
 
 # 🎯 django-smart-exam-portal
 
@@ -21,6 +25,10 @@ A dynamic, secure, and fully responsive online examination platform built using 
 - 📱 Fully Responsive UI (Bootstrap 5)
 - 🚨 Custom 404 & 500 Error Pages
 - 🗄️ MySQL Database Integration
+- 🔍 SEO Optimized
+- 🚨 Custom 400, 404 & 500 Error Pages
+- ☁️ Production Deployment on PythonAnywhere
+- 📊 Performance Analytics
 - 🔒 Environment Variables using `.env`
 
 ---
@@ -31,7 +39,7 @@ A dynamic, secure, and fully responsive online examination platform built using 
 |----------|--------------|
 | 🧠 Backend | <img src="https://skillicons.dev/icons?i=python,django" height="30"/> |
 | 🎨 Frontend | <img src="https://skillicons.dev/icons?i=html,css,bootstrap,js" height="30"/> |
-| 🗄️ Database | <img src="https://skillicons.dev/icons?i=mysql" height="30"/> |
+| 🗄️ Database | <img src="https://skillicons.dev/icons?i=sqlite" height="30"/>  • MySQL (Development) |
 | 🔨 Tools | <img src="https://skillicons.dev/icons?i=vscode,git,github" height="30"/> |
 
 ---
@@ -39,14 +47,35 @@ A dynamic, secure, and fully responsive online examination platform built using 
 
 ## 📸 Screenshots
 
-> *(Add screenshots here)*
+🏠 Home
 
-- Home Page
-- Quiz Page
-- Dashboard
-- Leaderboard
-- Review Page
-- Admin Panel
+📝 Quiz
+
+🏆 Leaderboard
+
+📖 Review
+
+⭐ Feedback
+
+👨‍💻 About
+
+---
+
+## 🚀 Deployment
+
+Hosted on PythonAnywhere.
+
+Production-ready configuration with
+
+- Environment Variables
+
+- Static File Handling
+
+- Secure Authentication
+
+- Custom Error Pages
+
+- SEO Metadata
 
 ---
 
