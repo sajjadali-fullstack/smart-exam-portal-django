@@ -1,4 +1,8 @@
-## ***Idea came while commuting in Mumbai local train — wanted a platform to revise programming concepts on the go. Built Smart Exam Portal with Django featuring category-based quizzes, difficulty filters, leaderboard, and answer review system.***
+## 💡 Inspiration
+
+
+
+## ***Idea came while commuting in Mumbai local train*** — **wanted a platform to revise programming concepts on the go.<br> Built Smart Exam Portal with Django featuring category-based quizzes, difficulty filters, leaderboard, and answer review system.**
 
 # 🎯 django-smart-exam-portal
 
