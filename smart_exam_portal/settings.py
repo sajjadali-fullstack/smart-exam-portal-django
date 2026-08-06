@@ -22,7 +22,10 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-SECRET_KEY = 'django-insecure-+!*qn-_fbogs&#_9j%i-00j9i%f0eeqi423z95$vwodb)4iia1'
+
+from decouple import config
+
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
