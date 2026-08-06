@@ -47,17 +47,39 @@ A dynamic, secure, and fully responsive online examination platform built using 
 
 ## 📸 Screenshots
 
-🏠 Home
+### 🏠 Home
 
-📝 Quiz
+![Home](screenshots/home.png)
 
-🏆 Leaderboard
+---
 
-📖 Review
+### 📝 Quiz
 
-⭐ Feedback
+![Quiz](screenshots/quiz.png)
 
-👨‍💻 About
+---
+
+### 🏆 Leaderboard
+
+![Leaderboard](screenshots/leaderboard.png)
+
+---
+
+### 📖 Review
+
+![Review](screenshots/review.png)
+
+---
+
+### ⭐ Feedback
+
+![Feedback](screenshots/feedback.png)
+
+---
+
+### 👨‍💻 About
+
+![About](screenshots/about.png)
 
 ---
 
