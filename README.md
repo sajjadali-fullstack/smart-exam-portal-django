@@ -47,14 +47,35 @@ A dynamic, secure, and fully responsive online examination platform built using 
 
 ## 📸 Screenshots
 
-> *(Add screenshots here)*
+🏠 Home
 
-- Home Page
-- Quiz Page
-- Dashboard
-- Leaderboard
-- Review Page
-- Admin Panel
+📝 Quiz
+
+🏆 Leaderboard
+
+📖 Review
+
+⭐ Feedback
+
+👨‍💻 About
+
+---
+
+## 🚀 Deployment
+
+Hosted on PythonAnywhere.
+
+Production-ready configuration with
+
+- Environment Variables
+
+- Static File Handling
+
+- Secure Authentication
+
+- Custom Error Pages
+
+- SEO Metadata
 
 ---
 
